@@ -407,58 +407,6 @@
                 font-weight: 600;
             }
 
-            /* Menu Section */
-            .menu-section {
-                background: var(--gray-100);
-                padding: 3rem 2rem;
-                margin-top: 3rem;
-            }
-
-            .menu-container {
-                max-width: 1000px;
-                margin: 0 auto;
-            }
-
-            .menu-section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 2rem;
-                color: var(--gray-800);
-                font-weight: 600;
-            }
-
-            .menu-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .menu-item {
-                background: var(--gray-50);
-                padding: 1.5rem;
-                border-radius: 4px;
-                border: 1px solid var(--gray-200);
-                text-align: center;
-            }
-
-            .menu-item h3 {
-                font-size: 1.1rem;
-                margin-bottom: 0.5rem;
-                color: var(--coffee-dark);
-                font-weight: 600;
-            }
-
-            .menu-item .description {
-                font-size: 0.85rem;
-                color: var(--gray-600);
-                margin-bottom: 1rem;
-            }
-
-            .menu-item .price {
-                font-size: 1.3rem;
-                font-weight: 600;
-                color: var(--gray-800);
-            }
-
             /* Access Section */
             .access-section {
                 background: var(--gray-100);
@@ -645,10 +593,6 @@
                     width: 16px;
                     height: 16px;
                 }
-
-                .menu-grid {
-                    grid-template-columns: 1fr;
-                }
             }
 
             /* Accessibility */
@@ -676,7 +620,6 @@
             <div class="header-inner">
                 <img class="header-logo" src="cafehomies-logo.png" alt="café homies logo">
                 <ul class="header-links">
-                    <li><a href="#menu">menu</a></li>
                     <li><a href="#schedule">schedule</a></li>
                     <li><a href="#access">access</a></li>
                     <li>
@@ -725,7 +668,7 @@
                 <div class="info-card">
                     <h2>営業時間</h2>
                     <div class="content">11:00 ~ 18:30</div>
-                    <div class="hours-detail">不定休</div>
+                    <div class="hours-detail">不定休　下記のカレンダーをご確認ください。</div>
                 </div>
                 <div class="info-card">
                     <h2>場所</h2>
@@ -765,22 +708,6 @@
                         <div class="schedule-list" id="schedule-list"></div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="menu-section" id="menu">
-            <div class="menu-container">
-                <h2>今月のメニュー</h2>
-                <div class="menu-grid">
-                    <div class="menu-item">
-                        <h3>シングルオリジン</h3>
-                        <p class="description">毎月厳選した単一農園のコーヒー豆を使用。</p>
-                        <div class="price">¥600</div>
-                    </div>
-                </div>
-                <p style="margin-top: 2rem; color: var(--gray-600); text-align: center; font-size: 0.9rem;">
-                    その他メニューは店舗にてご確認ください。
-                </p>
             </div>
         </section>
 
