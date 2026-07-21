@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>café homies</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                --gray-50: #fafafa;
+                --gray-100: #f5f5f5;
+                --gray-200: #e8e8e8;
+                --gray-300: #d3d3d3;
+                --gray-400: #a9a9a9;
+                --gray-600: #666666;
+                --gray-800: #333333;
+                --coffee: #8b6f47;
+                --coffee-dark: #6b5438;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                background: var(--gray-100);
+                color: var(--gray-800);
+                line-height: 1.6;
+            }
+
+            /* Header */
+            header {
+                background: white;
+                border-bottom: 1px solid var(--gray-200);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .header-inner {
+                max-width: 1000px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 2rem;
+                padding: 0.75rem 2rem;
+                min-height: 68px;
+            }
+
+            .header-logo {
+                display: block;
+                width: 112px;
+                height: auto;
+            }
+
+            .header-links {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                list-style: none;
+            }
+
+            .header-links a {
+                color: var(--gray-600);
+                text-decoration: none;
+                font-size: 0.85rem;
+                font-weight: 500;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                transition: color 0.3s;
+            }
+
+            .header-links a:hover {
+                color: var(--coffee);
+            }
+
+            .instagram-link {
+                width: 34px;
+                height: 34px;
+                display: inline-grid;
+                place-items: center;
+                color: var(--gray-600);
+                border: 1px solid var(--gray-200);
+                border-radius: 50%;
+                transition: color 0.3s, border-color 0.3s, background 0.3s;
+            }
+
+            .instagram-link:hover {
+                color: var(--coffee);
+                border-color: var(--coffee);
+                background: var(--gray-50);
+            }
+
+            .instagram-link svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            /* Hero Section */
+            .hero {
+                background: var(--gray-100);
+                padding: 3.5rem 0 4rem;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .hero-copy {
+                max-width: 600px;
+                margin: 0 auto 2.5rem;
+                padding: 0 2rem;
+            }
+
+            .hero-title {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.9rem;
+                margin-bottom: 0.5rem;
+                transform: translateY(0.14em);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 0;
+                font-weight: 700;
+                line-height: 1;
+                color: var(--gray-800);
+            }
+
+            .hero-title-logo {
+                display: block;
+                width: clamp(250px, 20vw, 170px);
+                height: auto;
+                margin: -3.3em 0 -3.1em;
+                clip-path: inset(36% 5% 34% 5%);
+                transform: translateY(0.6em);
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                color: var(--gray-600);
+                font-weight: 400;
+            }
+
+            .hero-slider {
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .hero-slider-track {
+                display: flex;
+                width: max-content;
+                animation: slow-slide 38s linear infinite;
+            }
+
+            .hero-slide-group {
+                display: flex;
+                gap: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .hero-slide {
+                flex: 0 0 clamp(220px, 24vw, 300px);
+                width: clamp(220px, 24vw, 300px);
+                aspect-ratio: 1;
+                display: grid;
+                place-items: center;
+                overflow: hidden;
+                padding: 0;
+                background: white;
+                border: 1px solid var(--gray-200);
+                border-radius: 8px;
+            }
+
+            .hero-slide img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            }
+
+            @keyframes slow-slide {
+                from {
+                    transform: translateX(0);
+                }
+
+                to {
+                    transform: translateX(-50%);
+                }
+            }
+
+            /* Info Grid */
+            .info-section {
+                max-width: 1000px;
+                margin: 4rem auto;
+                padding: 0 2rem;
+            }
+
+            .info-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .info-card {
+                background: white;
+                padding: 2rem;
+                border-left: 4px solid var(--coffee);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            }
+
+            .info-card h2 {
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: var(--gray-600);
+                margin-bottom: 1rem;
+            }
+
+            .info-card .content {
+                font-size: 1.3rem;
+                color: var(--gray-800);
+                font-weight: 500;
+            }
+
+            .info-card .content a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .info-card .content a:hover {
+                color: var(--coffee);
+            }
+
+            .instagram-card .content a {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .instagram-card img {
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+                display: block;
+            }
+
+            .hours-detail {
+                margin-top: 0.5rem;
+                font-size: 0.9rem;
+                color: var(--gray-600);
+            }
+
+            /* Schedule Section */
+            .schedule-section {
+                background: white;
+                padding: 3rem 2rem;
+            }
+
+            .schedule-container {
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+
+            .section-heading {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+                color: var(--gray-800);
+                font-weight: 600;
+                text-align: center;
+            }
+
+            .schedule-layout {
+                max-width: 760px;
+                margin: 0 auto;
+            }
+
+            .calendar-card {
+                background: var(--gray-50);
+                border: 1px solid var(--gray-200);
+                border-radius: 8px;
+                padding: 1.5rem;
+            }
+
+            .calendar-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .calendar-title {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: var(--gray-800);
+            }
+
+            .calendar-loading {
+                font-size: 0.85rem;
+                color: var(--gray-600);
+            }
+
+            .calendar-grid {
+                display: grid;
+                grid-template-columns: repeat(7, minmax(0, 1fr));
+                gap: 0.4rem;
+            }
+
+            .weekday {
+                font-size: 0.75rem;
+                color: var(--gray-600);
+                text-align: center;
+                font-weight: 600;
+                padding-bottom: 0.2rem;
+            }
+
+            .calendar-day,
+            .calendar-blank {
+                min-height: 78px;
+                border-radius: 6px;
+            }
+
+            .calendar-day {
+                border: 1px solid var(--gray-200);
+                background: white;
+                color: var(--gray-800);
+                padding: 0.55rem;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+
+            .calendar-day.is-today {
+                border-color: var(--coffee);
+                box-shadow: inset 0 0 0 1px var(--coffee);
+            }
+
+            .calendar-day.is-closed {
+                background: #fff3f0;
+                border-color: #e6b7aa;
+            }
+
+            .calendar-day.has-event {
+                background: #f5f7ff;
+                border-color: #c8d1ef;
+            }
+
+            .calendar-day.is-closed.has-event {
+                background: linear-gradient(135deg, #fff3f0 0%, #f5f7ff 100%);
+            }
+
+            .day-number {
+                font-weight: 600;
+                line-height: 1;
+            }
+
+            .day-badge {
+                width: fit-content;
+                max-width: 100%;
+                border-radius: 999px;
+                padding: 0.15rem 0.45rem;
+                font-size: 0.68rem;
+                line-height: 1.25;
+                color: var(--gray-800);
+                background: var(--gray-200);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .day-badge.closed {
+                background: #f1c4b8;
+            }
+
+            .day-badge.event {
+                background: #d6def7;
+            }
+
+            .schedule-list {
+                margin-top: 1rem;
+                display: grid;
+                gap: 0.5rem;
+                color: var(--gray-600);
+                font-size: 0.9rem;
+            }
+
+            .schedule-list-item {
+                display: flex;
+                gap: 0.5rem;
+                align-items: baseline;
+            }
+
+            .schedule-list-date {
+                min-width: 3.5rem;
+                color: var(--gray-800);
+                font-weight: 600;
+            }
+
+            /* Menu Section */
+            .menu-section {
+                background: var(--gray-100);
+                padding: 3rem 2rem;
+                margin-top: 3rem;
+            }
+
+            .menu-container {
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+
+            .menu-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+                color: var(--gray-800);
+                font-weight: 600;
+            }
+
+            .menu-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .menu-item {
+                background: var(--gray-50);
+                padding: 1.5rem;
+                border-radius: 4px;
+                border: 1px solid var(--gray-200);
+                text-align: center;
+            }
+
+            .menu-item h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+                color: var(--coffee-dark);
+                font-weight: 600;
+            }
+
+            .menu-item .description {
+                font-size: 0.85rem;
+                color: var(--gray-600);
+                margin-bottom: 1rem;
+            }
+
+            .menu-item .price {
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: var(--gray-800);
+            }
+
+            /* Access Section */
+            .access-section {
+                background: var(--gray-100);
+                padding: 3rem 2rem;
+            }
+
+            .access-container {
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+
+            .access-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+                color: var(--gray-800);
+                font-weight: 600;
+            }
+
+            .access-content {
+                background: white;
+                padding: 2rem;
+                border-radius: 4px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .access-info h3 {
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: var(--gray-600);
+                margin-bottom: 0.8rem;
+            }
+
+            .access-info p {
+                font-size: 1rem;
+                color: var(--gray-800);
+                margin-bottom: 1.5rem;
+                line-height: 1.7;
+            }
+
+            .access-map {
+                background: var(--gray-100);
+                border-radius: 4px;
+                overflow: hidden;
+                border: 1px solid var(--gray-200);
+            }
+
+            .access-map iframe {
+                display: block;
+                width: 100%;
+                height: 280px;
+                border: 0;
+            }
+
+            .map-link {
+                display: block;
+                padding: 0.8rem 1rem;
+                color: var(--coffee-dark);
+                background: white;
+                text-align: center;
+                font-size: 0.9rem;
+                font-weight: 600;
+                text-decoration: none;
+            }
+
+            .map-link:hover {
+                text-decoration: underline;
+            }
+
+            /* Footer */
+            footer {
+                background: var(--gray-800);
+                color: var(--gray-300);
+                padding: 2rem;
+                text-align: center;
+                font-size: 0.85rem;
+            }
+
+            footer a {
+                color: var(--coffee);
+                text-decoration: none;
+            }
+
+            footer a:hover {
+                text-decoration: underline;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 1.8rem;
+                }
+
+                .hero-title {
+                    gap: 0.5rem;
+                }
+
+                .hero-title-logo {
+                    width: clamp(92px, 32vw, 126px);
+                }
+
+                .hero {
+                    padding: 2.75rem 0 3rem;
+                }
+
+                .hero-copy {
+                    margin-bottom: 2rem;
+                }
+
+                .hero-slider-track {
+                    animation-duration: 32s;
+                }
+
+                .hero-slide-group {
+                    gap: 0.9rem;
+                    padding-right: 0.9rem;
+                }
+
+                .hero-slide {
+                    flex-basis: clamp(170px, 46vw, 220px);
+                    width: clamp(170px, 46vw, 220px);
+                }
+
+                .info-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .schedule-section {
+                    padding: 2.5rem 1rem;
+                }
+
+                .calendar-card {
+                    padding: 1rem;
+                }
+
+                .calendar-grid {
+                    gap: 0.25rem;
+                }
+
+                .calendar-day,
+                .calendar-blank {
+                    min-height: 62px;
+                }
+
+                .calendar-day {
+                    padding: 0.4rem;
+                }
+
+                .day-badge {
+                    font-size: 0.62rem;
+                    padding: 0.12rem 0.35rem;
+                }
+
+                .access-content {
+                    grid-template-columns: 1fr;
+                }
+
+                .header-inner {
+                    gap: 1rem;
+                    padding: 0.6rem 1.25rem;
+                    min-height: 62px;
+                }
+
+                .header-logo {
+                    width: 88px;
+                }
+
+                .header-links {
+                    gap: 1rem;
+                }
+
+                .header-links a {
+                    font-size: 0.75rem;
+                }
+
+                .instagram-link {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                .instagram-link svg {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                .menu-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            /* Accessibility */
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
+
+                .hero-slider-track {
+                    animation: none !important;
+                    transform: none;
+                }
+            }
+
+            a:focus-visible {
+                outline: 2px solid var(--coffee);
+                outline-offset: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="header-inner">
+                <img class="header-logo" src="cafehomies-logo.png" alt="café homies logo">
+                <ul class="header-links">
+                    <li><a href="#menu">menu</a></li>
+                    <li><a href="#schedule">schedule</a></li>
+                    <li><a href="#access">access</a></li>
+                    <li>
+                        <a class="instagram-link" href="https://www.instagram.com/cafe_homies_/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="hero-title">
+                    <h1>café</h1>
+                    <img class="hero-title-logo" src="Homies.png" alt="homies">
+                </div>
+                <p class="hero-subtitle">八王子の街に、もう一つのお気に入りの場所を。</p>
+            </div>
+            <div class="hero-slider" aria-label="café homies gallery">
+                <div class="hero-slider-track">
+                    <div class="hero-slide-group">
+                        <div class="hero-slide"><img src="s1.png" alt=""></div>
+                        <div class="hero-slide"><img src="s2.png" alt=""></div>
+                        <div class="hero-slide"><img src="s3.png" alt=""></div>
+                        <div class="hero-slide"><img src="s4.png" alt=""></div>
+                        <div class="hero-slide"><img src="s5.png" alt=""></div>
+                    </div>
+                    <div class="hero-slide-group" aria-hidden="true">
+                        <div class="hero-slide"><img src="s1.png" alt=""></div>
+                        <div class="hero-slide"><img src="s2.png" alt=""></div>
+                        <div class="hero-slide"><img src="s3.png" alt=""></div>
+                        <div class="hero-slide"><img src="s4.png" alt=""></div>
+                        <div class="hero-slide"><img src="s5.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section" id="hours">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h2>営業時間</h2>
+                    <div class="content">11:00 ~ 18:30</div>
+                    <div class="hours-detail">不定休</div>
+                </div>
+                <div class="info-card">
+                    <h2>場所</h2>
+                    <div class="content">東京都八王子市</div>
+                    <div class="hours-detail">千人町3-17-6 1F</div>
+                </div>
+                <div class="info-card">
+                    <h2>電話番号</h2>
+                    <div class="content"><a href="tel:05015688041">050-1568-8041</a></div>
+                    <div class="hours-detail">お取り置き：instagram又はお電話</div>
+                </div>
+                <div class="info-card instagram-card">
+                    <h2>Instagram</h2>
+                    <div class="content">
+                        <a href="https://www.instagram.com/cafe_homies_/" target="_blank" rel="noopener">
+                            <img src="Instagram_icon.png" alt="">
+                            @cafe_homies_
+                        </a>
+                    </div>
+                    <div class="hours-detail">最新情報はinstagramから！</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="schedule-section" id="schedule">
+            <div class="schedule-container">
+                <h2 class="section-heading">Schedule</h2>
+                <div class="schedule-layout">
+                    <div class="calendar-card">
+                        <div class="calendar-header">
+                            <div>
+                                <div class="calendar-title" id="calendar-title"></div>
+                            </div>
+                            <div class="calendar-loading" id="calendar-loading">読み込み中...</div>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid"></div>
+                        <div class="schedule-list" id="schedule-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="menu">
+            <div class="menu-container">
+                <h2>今月のメニュー</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>シングルオリジン</h3>
+                        <p class="description">毎月厳選した単一農園のコーヒー豆を使用。</p>
+                        <div class="price">¥600</div>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; color: var(--gray-600); text-align: center; font-size: 0.9rem;">
+                    その他メニューは店舗にてご確認ください。
+                </p>
+            </div>
+        </section>
+
+        <section class="access-section" id="access">
+            <div class="access-container">
+                <h2>アクセス</h2>
+                <div class="access-content">
+                    <div class="access-info">
+                        <h3>住所</h3>
+                        <p>東京都八王子市千人町3-17-6 1F</p>
+                        <h3>最寄り駅</h3>
+                        <p>JR中央線「八王子駅」より徒歩8分</p>
+                        <h3>営業時間</h3>
+                        <p>11:00 ~ 18:30<br>不定休</p>
+                    </div>
+                    <div class="access-map">
+                        <iframe
+                            title="café homies Google Map"
+                            src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%85%AB%E7%8E%8B%E5%AD%90%E5%B8%82%E5%8D%83%E4%BA%BA%E7%94%BA3-17-6%201F&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%85%AB%E7%8E%8B%E5%AD%90%E5%B8%82%E5%8D%83%E4%BA%BA%E7%94%BA3-17-6%201F" target="_blank" rel="noopener">
+                            Google Mapで開く
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 café homies. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">東京都八王子市千人町3-17-6 1F</p>
+        </footer>
+        <script>
+            // ここにApps ScriptのウェブアプリURLを設定
+            const GAS_URL = 'https://script.google.com/macros/s/AKfycbzQxrHWYn5431oW0pEO6X6xTkEv0FfxsvUCGvqxkGxsf5xY_PcqYCO-CKzfli-oAK5W/exec';
+            const TOKYO_TIME_ZONE = 'Asia/Tokyo';
+            const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            const calendarTitle = document.getElementById('calendar-title');
+            const calendarLoading = document.getElementById('calendar-loading');
+            const calendarGrid = document.getElementById('calendar-grid');
+            const scheduleList = document.getElementById('schedule-list');
+
+            const tokyoToday = getTokyoDateParts();
+            const activeYear = tokyoToday.year;
+            const activeMonth = tokyoToday.month;
+
+            function getTokyoDateParts(date = new Date()) {
+                const parts = new Intl.DateTimeFormat('en-US', {
+                    timeZone: TOKYO_TIME_ZONE,
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                }).formatToParts(date);
+
+                const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+                return {
+                    year: Number(values.year),
+                    month: Number(values.month),
+                    day: Number(values.day)
+                };
+            }
+
+            async function loadSchedule() {
+                try {
+                    const res = await fetch(GAS_URL);
+                    if (!res.ok) throw new Error('network error');
+                    return await res.json();
+                } catch (err) {
+                    console.error('スケジュールの取得に失敗しました', err);
+                    return null;
+                }
+            }
+
+            function formatDateKey(year, month, day) {
+                return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            }
+
+            function escapeHTML(value) {
+                return value.replace(/[&<>"']/g, (char) => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                }[char]));
+            }
+
+            function renderCalendar(scheduleData) {
+                const monthLabel = new Intl.DateTimeFormat('ja-JP', {
+                    timeZone: TOKYO_TIME_ZONE,
+                    year: 'numeric',
+                    month: 'long'
+                }).format(new Date(Date.UTC(activeYear, activeMonth - 1, 1)));
+                const firstWeekday = new Date(Date.UTC(activeYear, activeMonth - 1, 1)).getUTCDay();
+                const daysInMonth = new Date(Date.UTC(activeYear, activeMonth, 0)).getUTCDate();
+
+                calendarTitle.textContent = monthLabel;
+                calendarGrid.innerHTML = weekdays.map((day) => `<div class="weekday">${day}</div>`).join('');
+
+                for (let i = 0; i < firstWeekday; i += 1) {
+                    calendarGrid.insertAdjacentHTML('beforeend', '<div class="calendar-blank"></div>');
+                }
+
+                for (let day = 1; day <= daysInMonth; day += 1) {
+                    const dateKey = formatDateKey(activeYear, activeMonth, day);
+                    const item = scheduleData[dateKey] || {};
+                    const classes = [
+                        'calendar-day',
+                        item.closed ? 'is-closed' : '',
+                        item.event ? 'has-event' : '',
+                        dateKey === formatDateKey(tokyoToday.year, tokyoToday.month, tokyoToday.day) ? 'is-today' : ''
+                    ].filter(Boolean).join(' ');
+
+                    const badges = [
+                        item.closed ? '<span class="day-badge closed">休み</span>' : '',
+                        item.event ? `<span class="day-badge event">${escapeHTML(item.event)}</span>` : ''
+                    ].join('');
+
+                    calendarGrid.insertAdjacentHTML('beforeend', `
+                        <div class="${classes}">
+                            <span class="day-number">${day}</span>
+                            ${badges}
+                        </div>
+                    `);
+                }
+
+                renderScheduleList(scheduleData);
+            }
+
+            function renderScheduleList(scheduleData) {
+                const monthPrefix = `${activeYear}-${String(activeMonth).padStart(2, '0')}`;
+                const entries = Object.entries(scheduleData)
+                    .filter(([dateKey, item]) => dateKey.startsWith(monthPrefix) && (item.closed || item.event))
+                    .sort(([a], [b]) => a.localeCompare(b));
+
+                if (!entries.length) {
+                    scheduleList.innerHTML = '<p>今月の休業日・イベント出展はまだ登録されていません。</p>';
+                    return;
+                }
+
+                scheduleList.innerHTML = entries.map(([dateKey, item]) => {
+                    const day = Number(dateKey.slice(-2));
+                    const labels = [
+                        item.closed ? '休業日' : '',
+                        item.event ? `イベント出展: ${escapeHTML(item.event)}` : ''
+                    ].filter(Boolean).join(' / ');
+
+                    return `
+                        <div class="schedule-list-item">
+                            <span class="schedule-list-date">${day}日</span>
+                            <span>${labels}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            async function init() {
+                const scheduleData = await loadSchedule();
+                calendarLoading.style.display = 'none';
+
+                if (scheduleData === null) {
+                    scheduleList.innerHTML = '<p>スケジュールの読み込みに失敗しました。時間をおいて再度お試しください。</p>';
+                    renderCalendar({});
+                    return;
+                }
+
+                renderCalendar(scheduleData);
+            }
+
+            init();
+        </script>
+    </body>
+    </html>
