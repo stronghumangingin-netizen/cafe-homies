@@ -387,6 +387,11 @@
                 background: #d6def7;
             }
 
+            .day-badge-mobile,
+            .schedule-legend {
+                display: none;
+            }
+
             .schedule-list {
                 margin-top: 1rem;
                 display: grid;
@@ -558,8 +563,72 @@
                 }
 
                 .day-badge {
-                    font-size: 0.62rem;
-                    padding: 0.12rem 0.35rem;
+                    display: none;
+                }
+
+                .day-badge-mobile {
+                    display: inline-grid;
+                    place-items: center;
+                    width: 1.35rem;
+                    height: 1.35rem;
+                    border-radius: 999px;
+                    font-size: 0.68rem;
+                    font-weight: 700;
+                    line-height: 1;
+                }
+
+                .day-badge-mobile.closed {
+                    background: #f1c4b8;
+                }
+
+                .day-badge-mobile.event {
+                    background: #d6def7;
+                }
+
+                .schedule-legend {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.75rem;
+                    margin: 0.75rem 0 1rem;
+                    font-size: 0.8rem;
+                    color: var(--gray-600);
+                }
+
+                .schedule-legend-item {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.35rem;
+                }
+
+                .schedule-legend-mark {
+                    width: 0.8rem;
+                    height: 0.8rem;
+                    border-radius: 999px;
+                }
+
+                .schedule-legend-mark.closed {
+                    background: #f1c4b8;
+                }
+
+                .schedule-legend-mark.event {
+                    background: #d6def7;
+                }
+
+                .schedule-list {
+                    gap: 0.65rem;
+                    font-size: 0.95rem;
+                }
+
+                .schedule-list-item {
+                    align-items: flex-start;
+                    padding: 0.75rem;
+                    border-left: 3px solid var(--coffee);
+                    background: white;
+                    line-height: 1.5;
+                }
+
+                .schedule-list-date {
+                    min-width: 4.25rem;
                 }
 
                 .access-content {
@@ -705,6 +774,10 @@
                             <div class="calendar-loading" id="calendar-loading">読み込み中...</div>
                         </div>
                         <div class="calendar-grid" id="calendar-grid"></div>
+                        <div class="schedule-legend" aria-label="カレンダーの凡例">
+                            <span class="schedule-legend-item"><span class="schedule-legend-mark closed"></span>休業日</span>
+                            <span class="schedule-legend-item"><span class="schedule-legend-mark event"></span>イベント</span>
+                        </div>
                         <div class="schedule-list" id="schedule-list"></div>
                     </div>
                 </div>
@@ -825,8 +898,8 @@
                     ].filter(Boolean).join(' ');
 
                     const badges = [
-                        item.closed ? '<span class="day-badge closed">休み</span>' : '',
-                        item.event ? `<span class="day-badge event">${escapeHTML(item.event)}</span>` : ''
+                        item.closed ? '<span class="day-badge closed">休み</span><span class="day-badge-mobile closed" aria-label="休業日">休</span>' : '',
+                        item.event ? `<span class="day-badge event">${escapeHTML(item.event)}</span><span class="day-badge-mobile event" aria-label="イベント">イ</span>` : ''
                     ].join('');
 
                     calendarGrid.insertAdjacentHTML('beforeend', `
